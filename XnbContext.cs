@@ -5,7 +5,7 @@ namespace Bounce
     public class XnbContext : IDisposable
     {
         public const byte XnaGameStudio4 = 5;
-        private static readonly byte[] Magic = {(byte) 'X', (byte) 'N', (byte) 'B'};
+        private static readonly byte[] Magic = { (byte)'X', (byte)'N', (byte)'B' };
         private readonly List<IXnbAsset> _assets = new List<IXnbAsset>();
         private readonly Stream _dataStream = new MemoryStream();
 
@@ -34,9 +34,9 @@ namespace Bounce
             var context = new XnbContext(primary);
             using var bw = new BinaryWriter(stream, Encoding.UTF8, true);
             bw.Write(Magic);
-            bw.Write((char) target);
+            bw.Write((char)target);
             bw.Write(XnaGameStudio4);
-            bw.Write((byte) (hiDef ? 1 : 0));
+            bw.Write((byte)(hiDef ? 1 : 0));
             var sizePosition = stream.Position;
             stream.Seek(sizeof(uint), SeekOrigin.Current);
             bw.Write7BitEncodedInt(context._assets.Count);
@@ -50,7 +50,7 @@ namespace Bounce
             bw.Write7BitEncodedInt(0);
             context._dataStream.CopyTo(stream);
             stream.Seek(sizePosition, SeekOrigin.Begin);
-            bw.Write((int) stream.Length);
+            bw.Write((int)stream.Length);
         }
 
         public void Dispose()
