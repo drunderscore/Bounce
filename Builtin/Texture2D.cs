@@ -17,7 +17,7 @@ namespace Bounce.Builtin
             _format = format;
         }
 
-        public void Serialize(ExtendedBinaryWriter bw, XnbContext context)
+        public void Serialize(BinaryWriter bw, XnbContext context)
         {
             bw.Write((int) _format);
             var width = _pixels.GetLength(0);

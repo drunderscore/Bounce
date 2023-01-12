@@ -6,6 +6,6 @@ namespace Bounce
         string Name { get; }
         int Version => 0;
 
-        void Serialize(ExtendedBinaryWriter bw, XnbContext context);
+        void Serialize(BinaryWriter bw, XnbContext context);
     }
 }

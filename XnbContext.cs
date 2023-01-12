@@ -18,7 +18,7 @@ namespace Bounce
 
         public void AddAsset(IXnbAsset asset)
         {
-            using var bw = new ExtendedBinaryWriter(_dataStream, Encoding.UTF8, true);
+            using var bw = new BinaryWriter(_dataStream, Encoding.UTF8, true);
             if (asset == null)
                 bw.Write7BitEncodedInt(0);
             else
@@ -32,7 +32,7 @@ namespace Bounce
         public static void Write(Stream stream, IXnbAsset primary, Platform target, bool hiDef)
         {
             var context = new XnbContext(primary);
-            using var bw = new ExtendedBinaryWriter(stream, Encoding.UTF8, true);
+            using var bw = new BinaryWriter(stream, Encoding.UTF8, true);
             bw.Write(Magic);
             bw.Write((char) target);
             bw.Write(XnaGameStudio4);
