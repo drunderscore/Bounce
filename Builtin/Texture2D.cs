@@ -1,4 +1,3 @@
-using System;
 using Bounce.Builtin.Xna;
 
 namespace Bounce.Builtin
